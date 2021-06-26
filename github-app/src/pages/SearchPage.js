@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import { SearchContainer, SearchForm, StyledTextField, StyledButton } from '../style/style'
+import { 
+    SearchContainer, 
+    SearchForm, 
+    StyledTextField, 
+    StyledButton 
+} 
+from '../style/searchPageStyle'
 import { githubLogo } from '../images/images'
 import { useForm } from '../custom hooks/useForm'
 import { BASE_URL } from '../base url/BaseURL'
@@ -11,6 +17,10 @@ export default function SearchPage() {
     const [user, setUser] = useState({})
     const [form, setForm, handleValues] = useForm({ username: "" })
     const history = useHistory()
+
+    useEffect(() => {
+        document.title = `Buscar usuário do GitHub`
+    }, [])
 
     const searchUser = async (e) => {
         e.preventDefault()
@@ -35,7 +45,7 @@ export default function SearchPage() {
                     required
                     type="text"
                     label="Usuário"
-                    color="black"
+                    color="secondary"
                     variant="filled"
                     onChange={handleValues}
                     name="username"

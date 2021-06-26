@@ -1,6 +1,6 @@
 import React from 'react'
 import { CircularProgress } from '@material-ui/core'
-import { LoadingContainer } from '../style/style'
+import { LoadingContainer } from '../../style/loadingStyle'
 
 export const Loading = () => {
     return (

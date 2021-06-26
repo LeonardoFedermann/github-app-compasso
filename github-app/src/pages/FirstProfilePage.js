@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { MainContainer, ProfileImage } from '../style/style'
+import { MainContainer } from '../style/mainContainerStyle'
+import { ProfileImage } from '../style/profileStyle'
 import { BASE_URL } from '../base url/BaseURL'
-import { FirstProfileHeader } from '../components/FirstProfileHeader'
+import { FirstProfileHeader } from '../components/Profiles/FirstProfileHeader'
 import { goToSearchPage } from '../coordinator/Coordinator'
-import { ProfilePresentation } from '../components/ProfilePresentation'
-import { ProfileNumbers } from '../components/ProfileNumbers'
-import { ProfileBio } from '../components/ProfileBio'
-import {Loading} from '../components/Loading'
+import { ProfilePresentation } from '../components/Profiles/ProfilePresentation'
+import { ProfileNumbers } from '../components/Profiles/ProfileNumbers'
+import { ProfileBio } from '../components/Profiles/ProfileBio'
+import { Loading } from '../components/Loading/Loading'
 
 export default function FirstProfilePage() {
     const [user, setUser] = useState({})
@@ -18,6 +19,7 @@ export default function FirstProfilePage() {
 
     useEffect(() => {
         getUser()
+        document.title = `Perfil de ${username}`
     }, [])
 
     const getUser = async () => {
@@ -39,8 +41,6 @@ export default function FirstProfilePage() {
                     <FirstProfileHeader
                         login={user.login}
                         function={() => goToSearchPage(history)}
-                        buttonWord={'Buscar usuário'}
-                        buttonColor={'green'}
                     />
                     <ProfileImage alt={user.login} src={user.avatar_url} />
                     <ProfilePresentation

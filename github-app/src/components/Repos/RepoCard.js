@@ -1,14 +1,14 @@
 import React from 'react'
-import { ReposCardContainer } from '../style/style'
+import { ReposCardContainer } from '../../style/repoStyle'
 
 export const RepoCard = (props) => {
     return (
         <ReposCardContainer>
-            <div>
+            <section>
                 <h3>{props.name}</h3>
-                <p>{props.descrition}</p>
+                <p>{props.description}</p>
                 <p><strong>&#9733;</strong> {props.stargazers}</p>
-            </div>
+            </section>
         </ReposCardContainer>
     )
 }

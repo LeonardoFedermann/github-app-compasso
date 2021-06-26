@@ -1,11 +1,11 @@
 import React from 'react'
-import { ProfileHeaderContainer } from '../style/style'
+import { ProfileHeaderContainer } from '../../style/profileStyle'
 
 export const FirstProfileHeader = (props) => {
     return (
         <ProfileHeaderContainer buttonColor={props.buttonColor}>
             <h5>#{props.login}</h5>
-            <p onClick={props.function}>{props.buttonWord}</p>
+            <p onClick={props.function}>Buscar usuário</p>
         </ProfileHeaderContainer>
     )
 }
