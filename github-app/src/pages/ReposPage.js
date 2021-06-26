@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from 'react'
-import { MainContainer } from '../style/style'
-import { ReposHeader } from '../components/ReposHeader'
-import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { useForm } from '../custom hooks/useForm'
+import { MainContainer } from '../style/mainContainerStyle'
+import { StyledTextField, SearchRepoContainer } from '../style/repoStyle'
+import { ReposHeader } from '../components/Repos/ReposHeader'
 import { BASE_URL } from '../base url/BaseURL'
-import { RepoCard } from '../components/RepoCard'
-import { Loading } from '../components/Loading'
+import { RepoCard } from '../components/Repos/RepoCard'
+import { Loading } from '../components/Loading/Loading'
 
 export default function ReposPage() {
     const [repos, setRepos] = useState([])
+    const [renderedRepos, setRenderedRepos] = useState([])
+    const [form, setForm, handleValues] = useForm({ searchedRepo: '' })
     const { username } = useParams()
     const [quantity, setQuantity] = useState(0)
     const [showLoading, setShowLoading] = useState(true)
 
     useEffect(() => {
         getRepos()
+        document.title = `Repositórios de ${username}`
     }, [])
 
-    setTimeout(()=>{
+    useEffect(() => {
+        setRenderedRepos(repos)
+    }, [repos])
+
+    useEffect(() => {
+        filterRepos()
+    }, [form.searchedRepo])
+
+    setTimeout(() => {
         setShowLoading(false)
     }, 5000)
 
@@ -32,16 +45,44 @@ export default function ReposPage() {
         }
     }
 
+    const filterRepos = () => {
+        if (!form.searchedRepo) {
+            setRenderedRepos(repos)
+        } else {
+            const newRenderedRepos = repos.filter((repo) => {
+                return repo.name.toUpperCase().includes(form.searchedRepo.toUpperCase())
+            })
+            setRenderedRepos(newRenderedRepos)
+        }
+    }
+
     return (
         <MainContainer>
             <ReposHeader
-                publicRepos={quantity}
-                username={username}
+                showingPhrase={
+                    quantity === 0 ?
+                        `${username} não possui repositórios` :
+                        `${quantity} ${quantity === 1 ?
+                            'repositório' :
+                            'repositórios'} 
+                    de ${username}`
+                }
             />
+            <SearchRepoContainer>
+                <StyledTextField
+                    type="text"
+                    value={form.searchedRepo}
+                    name="searchedRepo"
+                    onChange={handleValues}
+                    label="Buscar repositório"
+                    color="secondary"
+                    variant="filled"
+                />
+            </SearchRepoContainer>
             {!repos[0] ?
-            showLoading && <Loading /> :
+                showLoading && <Loading /> :
                 <>
-                    {repos && repos.map((repo) => {
+                    {renderedRepos && renderedRepos.map((repo) => {
                         return (
                             <RepoCard
                                 name={repo.name}

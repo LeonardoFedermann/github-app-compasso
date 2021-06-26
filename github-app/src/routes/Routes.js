@@ -1,8 +1,8 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import SearchPage from '../pages/SearchPage'
 import ProfilePage from '../pages/ProfilePage'
-import FollowersPage from '../pages/FollowersPage'
-import FollowingPage from '../pages/FollowingPage'
+import FollowerUsersPage from '../pages/FollowerUsersPage'
+import FollowingUsersPage from '../pages/FollowingUsersPage'
 import ReposPage from '../pages/ReposPage'
 import ErrorPage from '../pages/ErrorPage'
 import FirstProfilePage from '../pages/FirstProfilePage'
@@ -22,10 +22,10 @@ export default function Routes() {
                     <ProfilePage />
                 </Route>
                 <Route exact path="/followers/:username">
-                    <FollowersPage />
+                    <FollowerUsersPage />
                 </Route>
                 <Route exact path="/following/:username">
-                    <FollowingPage />
+                    <FollowingUsersPage />
                 </Route>
                 <Route exact path="/repos/:username">
                     <ReposPage />
