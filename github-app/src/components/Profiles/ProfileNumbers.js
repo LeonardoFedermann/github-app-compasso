@@ -14,19 +14,31 @@ export const ProfileNumbers = (props) => {
 
     return (
         <ProfileNumbersContainer >
-            <section onClick={() => goToListOfFollowers(history, props.login)}>
+            <section
+                role="go to list of followers"
+                onClick={() => goToListOfFollowers(history, props.login)}
+            >
                 <h1>{props.followers}</h1>
                 <p>Seguidores</p>
             </section>
-            <section onClick={() => goToListOfFollowingUsers(history, props.login)}>
+            <section
+                role="go to list of following users"
+                onClick={() => goToListOfFollowingUsers(history, props.login)}
+            >
                 <h1>{props.following}</h1>
                 <p>Seguindo</p>
             </section>
-            <section onClick={() => goToReposList(history, props.login)}>
+            <section
+                role="go to list of repositories"
+                onClick={() => goToReposList(history, props.login)}
+            >
                 <h1>{props.repos}</h1>
                 <p>Repos</p>
             </section>
-            <section onClick={() => goToStarredList(history, props.login)}>
+            <section
+                role="go to list of starred repositories"
+                onClick={() => goToStarredList(history, props.login)}
+            >
                 <h1>{props.starred}</h1>
                 <p>Estrelas</p>
             </section>

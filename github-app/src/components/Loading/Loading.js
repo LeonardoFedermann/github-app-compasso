@@ -4,7 +4,9 @@ import { LoadingContainer } from '../../style/loadingStyle'
 
 export const Loading = () => {
     return (
-        <LoadingContainer>
+        <LoadingContainer
+            role="loading symbol"
+        >
             <CircularProgress color="secondary" />
         </LoadingContainer>
     )

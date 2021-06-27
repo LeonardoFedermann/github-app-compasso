@@ -24,8 +24,8 @@ export default function FirstProfilePage() {
 
     const getUser = async () => {
         try {
-            const user = await axios.get(`${BASE_URL}/users/${username}`)
-            const starred = await axios.get(`${BASE_URL}/users/${username}/starred`)
+            const user = await axios.get(`${BASE_URL}/${username}`)
+            const starred = await axios.get(`${BASE_URL}/${username}/starred`)
             setStarred(starred.data)
             setUser(user.data)
         } catch (error) {

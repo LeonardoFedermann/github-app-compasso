@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import {useForm} from '../custom hooks/useForm'
+import { useForm } from '../custom hooks/useForm'
 import { MainContainer } from '../style/mainContainerStyle'
 import { StyledTextField, SearchRepoContainer } from '../style/repoStyle'
 import { ReposHeader } from '../components/Repos/ReposHeader'
@@ -21,12 +21,11 @@ export default function StarredPage() {
         document.title = `Repositórios estrela de ${username}`
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         setRenderedStarredRepos(starred)
-        console.log(starred)
     }, [starred])
 
-    useEffect(()=>{
+    useEffect(() => {
         filterStarredRepos()
     }, [form.searchedStarredRepo])
 
@@ -36,7 +35,7 @@ export default function StarredPage() {
 
     const getStarred = async () => {
         try {
-            const starredRepos = await axios.get(`${BASE_URL}/users/${username}/starred`)
+            const starredRepos = await axios.get(`${BASE_URL}/${username}/starred`)
             setStarred(starredRepos.data)
         } catch (error) {
             alert(error.response.data.message)
@@ -68,6 +67,7 @@ export default function StarredPage() {
             />
             <SearchRepoContainer>
                 <StyledTextField
+                    role="filter starred repos field"
                     type="text"
                     value={form.searchedStarredRepo}
                     name="searchedStarredRepo"

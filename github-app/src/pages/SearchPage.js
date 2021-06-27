@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import { 
-    SearchContainer, 
-    SearchForm, 
-    StyledTextField, 
-    StyledButton 
-} 
-from '../style/searchPageStyle'
+import {
+    SearchContainer,
+    SearchForm,
+    StyledTextField,
+    StyledButton
+}
+    from '../style/searchPageStyle'
 import { githubLogo } from '../images/images'
 import { useForm } from '../custom hooks/useForm'
 import { BASE_URL } from '../base url/BaseURL'
@@ -25,7 +25,7 @@ export default function SearchPage() {
     const searchUser = async (e) => {
         e.preventDefault()
         try {
-            const user = await axios.get(`${BASE_URL}/users/${form.username}`)
+            const user = await axios.get(`${BASE_URL}/${form.username}`)
             setUser(user.data)
             goToFirstProfile(history, form.username)
         } catch (error) {
@@ -42,6 +42,7 @@ export default function SearchPage() {
             <img alt="GitHub Logo" src={githubLogo} />
             <SearchForm onSubmit={searchUser}>
                 <StyledTextField
+                    role="search user field"
                     required
                     type="text"
                     label="Usuário"
@@ -52,6 +53,7 @@ export default function SearchPage() {
                     value={form.username}
                 />
                 <StyledButton
+                    role="search user button"
                     color="secondary"
                     variant="contained"
                     onClick={searchUser}

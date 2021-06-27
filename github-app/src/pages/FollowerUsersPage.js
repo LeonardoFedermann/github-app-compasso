@@ -38,8 +38,8 @@ export default function FollowerUsersPage() {
 
     const getFollowers = async () => {
         try {
-            const followers = await axios.get(`${BASE_URL}/users/${username}/followers`)
-            const user = await axios.get(`${BASE_URL}/users/${username}`)
+            const followers = await axios.get(`${BASE_URL}/${username}/followers`)
+            const user = await axios.get(`${BASE_URL}/${username}`)
             setFollowers(followers.data)
             setQuantity(user.data.followers)
         } catch (error) {
@@ -72,11 +72,12 @@ export default function FollowerUsersPage() {
             />
             <SearchUserContainer>
                 <StyledTextField
+                    role="filter users field"
                     type="text"
                     value={form.searchedUser}
                     name="searchedUser"
                     onChange={handleValues}
-                    label="Buscar repositório"
+                    label="Buscar usuário"
                     color="secondary"
                     variant="filled"
                 />

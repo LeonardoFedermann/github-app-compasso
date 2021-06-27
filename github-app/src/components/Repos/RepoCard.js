@@ -3,7 +3,9 @@ import { ReposCardContainer } from '../../style/repoStyle'
 
 export const RepoCard = (props) => {
     return (
-        <ReposCardContainer>
+        <ReposCardContainer
+            role="show a repository"
+        >
             <section>
                 <h3>{props.name}</h3>
                 <p>{props.description}</p>
