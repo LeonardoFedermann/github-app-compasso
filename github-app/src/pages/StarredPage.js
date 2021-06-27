@@ -67,7 +67,6 @@ export default function StarredPage() {
             />
             <SearchRepoContainer>
                 <StyledTextField
-                    role="filter starred repos field"
                     type="text"
                     value={form.searchedStarredRepo}
                     name="searchedStarredRepo"

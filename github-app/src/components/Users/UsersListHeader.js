@@ -8,17 +8,8 @@ export const UsersListHeader = (props) => {
 
     return (
         <UsersListHeaderContainer>
-            <h4
-                role="go back to last page"
-                onClick={() => goBack(history)}
-            >
-                &#x2190;
-            </h4>
-            <h5
-                role="phrase that will be shown in page's header"
-            >
-                {props.showingPhrase}
-            </h5>
+            <h4 onClick={() => goBack(history)}>&#x2190;</h4>
+            <h5>{props.showingPhrase}</h5>
         </UsersListHeaderContainer>
     )
 }

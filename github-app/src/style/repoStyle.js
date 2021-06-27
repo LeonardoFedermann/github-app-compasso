@@ -32,14 +32,13 @@ border: 1px solid ${borderColor};
 display: flex;
 align-items: start;;
 justify-content: flex-end;
-max-height: 150px;
-padding: 2.5%;
+padding: 2.5% 0;
 @media(min-width: 1100px){
     width: 50%;
     border: 1px solid ${borderColor};
     border-radius: 10px;
-    padding: 1.5%;
-    margin-top: 3%;
+    padding: 1.5% 0;
+    margin-bottom: 3%;
 }
 section{
     width: 90%;
@@ -56,8 +55,7 @@ section{
 
 export const SearchRepoContainer = styled.section`
 width: 100%;
-padding: 2%;
-// heigth: 15vh;
+padding: 2% 0;
 background-color: ${primary};
 display: flex;
 align-items: center;

@@ -74,7 +74,6 @@ export default function FollowingUsersPage() {
             />
             <SearchUserContainer>
                 <StyledTextField
-                    role="filter users field"
                     type="text"
                     value={form.searchedUser}
                     name="searchedUser"

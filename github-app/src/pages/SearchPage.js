@@ -14,7 +14,6 @@ import { BASE_URL } from '../base url/BaseURL'
 import { goToFirstProfile } from '../coordinator/Coordinator'
 
 export default function SearchPage() {
-    const [user, setUser] = useState({})
     const [form, setForm, handleValues] = useForm({ username: "" })
     const history = useHistory()
 
@@ -26,7 +25,6 @@ export default function SearchPage() {
         e.preventDefault()
         try {
             const user = await axios.get(`${BASE_URL}/${form.username}`)
-            setUser(user.data)
             goToFirstProfile(history, form.username)
         } catch (error) {
             if (error.response.data.message === "Not Found") {
@@ -40,9 +38,11 @@ export default function SearchPage() {
     return (
         <SearchContainer>
             <img alt="GitHub Logo" src={githubLogo} />
-            <SearchForm onSubmit={searchUser}>
+            <SearchForm
+                onSubmit={searchUser}
+                role="form"
+            >
                 <StyledTextField
-                    role="search user field"
                     required
                     type="text"
                     label="Usuário"
@@ -53,7 +53,6 @@ export default function SearchPage() {
                     value={form.username}
                 />
                 <StyledButton
-                    role="search user button"
                     color="secondary"
                     variant="contained"
                     onClick={searchUser}
