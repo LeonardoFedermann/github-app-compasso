@@ -4,7 +4,7 @@ import { ProfilePresentationContainer } from '../../style/profileStyle'
 export const ProfilePresentation = (props) => {
     return (
         <ProfilePresentationContainer
-            role="show profile's main information (name, email and location of residence)."
+            role="presentation"
         >
             <section>
                 <h1>{props.name}</h1>

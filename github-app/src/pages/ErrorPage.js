@@ -14,9 +14,7 @@ export default function ErrorPage() {
 
     return (
         <MainContainer>
-            <ErrorContainer
-                role="page that will be shown in case no route is found"
-            >
+            <ErrorContainer>
                 <img alt="GitHub Logo" src={githubLogo} />
                 <h1>Ops! Não há nada aqui</h1>
                 <p>

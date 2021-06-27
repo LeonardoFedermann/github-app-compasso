@@ -70,7 +70,6 @@ export default function ReposPage() {
             />
             <SearchRepoContainer>
                 <StyledTextField
-                    role="filter repos field"
                     type="text"
                     value={form.searchedRepo}
                     name="searchedRepo"

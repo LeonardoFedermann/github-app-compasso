@@ -11,7 +11,6 @@ border: 1px solid ${borderColor};
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 2.5%;
 @media(min-width: 1100px){
     width: 50%;
     border: 1px solid ${borderColor};
@@ -66,8 +65,7 @@ p{
 
 export const SearchUserContainer = styled.section`
 width: 100%;
-padding: 2%;
-// heigth: 15vh;
+padding: 2% 0;
 background-color: ${primary};
 display: flex;
 align-items: center;
