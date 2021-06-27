@@ -3,7 +3,9 @@ import { UserCardContainer } from '../../style/userStyle'
 
 export const UserCard = (props) => {
     return (
-        <UserCardContainer>
+        <UserCardContainer
+        role="show a follower or following user"
+        >
             <section>
                 <img alt={props.login} src={props.imageUrl} />
                 <h4>{props.login}</h4>

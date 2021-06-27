@@ -36,8 +36,8 @@ export default function ReposPage() {
 
     const getRepos = async () => {
         try {
-            const repos = await axios.get(`${BASE_URL}/users/${username}/repos`)
-            const user = await axios.get(`${BASE_URL}/users/${username}`)
+            const repos = await axios.get(`${BASE_URL}/${username}/repos`)
+            const user = await axios.get(`${BASE_URL}/${username}`)
             setQuantity(user.data.public_repos)
             setRepos(repos.data)
         } catch (error) {
@@ -70,6 +70,7 @@ export default function ReposPage() {
             />
             <SearchRepoContainer>
                 <StyledTextField
+                    role="filter repos field"
                     type="text"
                     value={form.searchedRepo}
                     name="searchedRepo"

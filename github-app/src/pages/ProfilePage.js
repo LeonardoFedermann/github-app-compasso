@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { MainContainer } from '../style/mainContainerStyle'
-import {ProfileImage} from '../style/profileStyle'
+import { ProfileImage } from '../style/profileStyle'
 import { BASE_URL } from '../base url/BaseURL'
 import { ProfileHeader } from '../components/Profiles/ProfileHeader'
 import { goBack, goToSearchPage } from '../coordinator/Coordinator'
@@ -24,8 +24,8 @@ export default function ProfilePage() {
 
     const getUser = async () => {
         try {
-            const user = await axios.get(`${BASE_URL}/users/${username}`)
-            const starred = await axios.get(`${BASE_URL}/users/${username}/starred`)
+            const user = await axios.get(`${BASE_URL}/${username}`)
+            const starred = await axios.get(`${BASE_URL}/${username}/starred`)
             setStarred(starred.data)
             setUser(user.data)
         } catch (error) {

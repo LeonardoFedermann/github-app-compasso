@@ -66,5 +66,4 @@ justify-content: center;
 
 export const StyledTextField = styled(TextField)`
 width: 70%;
-color: white;
 `

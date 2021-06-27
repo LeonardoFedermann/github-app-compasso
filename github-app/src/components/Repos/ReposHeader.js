@@ -8,7 +8,12 @@ export const ReposHeader = (props) => {
 
     return (
         <ReposHeaderContainer>
-            <h4 onClick={() => goBack(history)}>&#x2190;</h4>
+            <h4
+                role="go back to last page"
+                onClick={() => goBack(history)}
+            >
+                &#x2190;
+            </h4>
             <h5>{props.showingPhrase}</h5>
         </ReposHeaderContainer>
     )

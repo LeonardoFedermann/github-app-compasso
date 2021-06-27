@@ -3,7 +3,9 @@ import { ProfileBioContainer } from '../../style/profileStyle'
 
 export const ProfileBio = (props) => {
     return (
-        <ProfileBioContainer>
+        <ProfileBioContainer
+        role="show profile's bio"
+        >
             {props.bio &&
                 <>
                     <h1>BIO</h1>

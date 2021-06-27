@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primary, secondary, darkColor} from './colors'
+import { primary, secondary, darkColor } from './colors'
 
 export const ProfileImage = styled.img`
 width: 100px;
@@ -61,12 +61,14 @@ section{
     }
     h1{
         margin-bottom: 2%;
+        transform: translatey(-10px);
         @media(min-width:1100px){
             transform:scale(2);
         }
     }
     p{
         margin: 0;
+        transform: translatey(-10px);
         @media(min-width:1100px){
             transform:scale(1.5);
         }
@@ -74,7 +76,7 @@ section{
 }
 `
 
-export const ProfileNumbersContainer = styled.section`
+export const ProfileNumbersContainer = styled.nav`
 width: 100%;
 height: 15vh;
 background-color: ${darkColor};

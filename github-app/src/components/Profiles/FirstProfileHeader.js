@@ -5,7 +5,12 @@ export const FirstProfileHeader = (props) => {
     return (
         <ProfileHeaderContainer buttonColor={props.buttonColor}>
             <h5>#{props.login}</h5>
-            <p onClick={props.function}>Buscar usuário</p>
+            <p
+                role="go to search profile page"
+                onClick={props.function}
+            >
+                Buscar usuário
+            </p>
         </ProfileHeaderContainer>
     )
 }

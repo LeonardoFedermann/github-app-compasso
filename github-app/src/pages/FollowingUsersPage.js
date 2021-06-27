@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
-import {useForm} from '../custom hooks/useForm'
+import { useForm } from '../custom hooks/useForm'
 import { MainContainer } from '../style/mainContainerStyle'
-import { SearchUserContainer, StyledTextField} from '../style/userStyle'
+import { SearchUserContainer, StyledTextField } from '../style/userStyle'
 import { UserCard } from '../components/Users/UserCard'
 import { goToProfile } from '../coordinator/Coordinator'
 import { UsersListHeader } from '../components/Users/UsersListHeader'
@@ -15,7 +15,7 @@ export default function FollowingUsersPage() {
     const [showLoading, setShowLoading] = useState(true)
     const [quantity, setQuantity] = useState(0)
     const [renderedUsers, setRenderedUsers] = useState([])
-    const [form, setForm, handleValues] = useForm({searchedUser:''})
+    const [form, setForm, handleValues] = useForm({ searchedUser: '' })
     const history = useHistory()
     const { username } = useParams()
 
@@ -24,11 +24,11 @@ export default function FollowingUsersPage() {
         document.title = `Quem ${username} segue`
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         setRenderedUsers(followingUsers)
     }, [followingUsers])
 
-    useEffect(()=>{
+    useEffect(() => {
         filterUsers()
     }, [form.searchedUser])
 
@@ -39,8 +39,8 @@ export default function FollowingUsersPage() {
 
     const getFollowingUsers = async () => {
         try {
-            const followingUsers = await axios.get(`${BASE_URL}/users/${username}/following`)
-            const user = await axios.get(`${BASE_URL}/users/${username}`)
+            const followingUsers = await axios.get(`${BASE_URL}/${username}/following`)
+            const user = await axios.get(`${BASE_URL}/${username}`)
             setFollowingUsers(followingUsers.data)
             setQuantity(user.data.following)
         } catch (error) {
@@ -73,12 +73,13 @@ export default function FollowingUsersPage() {
                 }
             />
             <SearchUserContainer>
-            <StyledTextField
+                <StyledTextField
+                    role="filter users field"
                     type="text"
                     value={form.searchedUser}
                     name="searchedUser"
                     onChange={handleValues}
-                    label="Buscar repositório"
+                    label="Buscar usuário"
                     color="secondary"
                     variant="filled"
                 />
