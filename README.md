@@ -39,7 +39,7 @@ Conforme orientado no enunciado do desafio, foi utilizado Jest para testar as re
 ### REQUISITOS TÉCNICOS
 
 - Algumas das ferramentas utilizadas na elaboração da aplicação foram: React.js, Styled-Components, Material UI, Axios, React Router, Hooks e Custom Hooks;
-- A aplicação foi desenvolvida por meio de Mobile First, sendo originalmente planejada para Mobile (especialmente IPhone6/7/8) e tendo sido adaptada de modo a tornar-se responsiva para Desktop;
+- A aplicação foi desenvolvida por meio de Mobile First, sendo originalmente planejada para Mobile (especialmente IPhone 6/7/8) e tendo sido adaptada de modo a tornar-se responsiva para Desktop;
 - Conforme solicitado, foram usadas tags semânticas do HTML, tais como header, section e nav;
 - Foram usadas boas práticas de Clean Code, tais como componentização do código e identação. 
 
