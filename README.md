@@ -50,7 +50,7 @@ Conforme orientado no enunciado do desafio, foi utilizado Jest para testar as re
   - a busca retorna somente um usuário em vez de uma lista. Sendo assim, seus resultados conterão as informações de apenas um usuário.    
 - Por questão de organização, optei por exibir o resultado da busca (contendo as informações do usuário) em uma página à parte do campo de busca;
 - Não ficou claro o que foi solicitado na seção CENÁRIO do enunciado do desafio. Sendo assim, optei por permitir que seja buscado somente o nome de usuário no campo de busca; em compensação, inclui a funcionalidade de filtro nas listas de repositórios em geral e de repositórios estrelados, viabilizando a pesquisa de repositórios do usuário em questão;
-- As listas de seguidores e de usuários seguidos apresentarão no máximo 30 usuários, pois esse é o limite retornado pela API do GitHub.
+- As listas de seguidores, de usuários seguidos, de repositórios e de repositórios estrelados apresentarão no máximo 30 itens, pois esse é o limite retornado pela API do GitHub.
 
 No mais, gostaria de agradecer imensamente pela oportunidade de realizar seu desafio!    
 Fico no aguardo de futuras orientações.
