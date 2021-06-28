@@ -8,8 +8,8 @@ import { getFollowingUsersTest } from '../tests and mocks/tests/getFollowingUser
 describe("Testing requests", () => {
   const username = 'aniltonveiga'
   // All tests were ellaborated based on "aniltonveiga" user, thus all its assertions values come from its
-  // information. If "username" variable's value or "aniltonveiga"'s information are altered, tests assertions
-  // must be updated.
+  // information. If "username" variable's value or "aniltonveiga"'s information are altered, assertions
+  // values must be updated.
 
   test(
     "Testing get user request, therefore it should return a user and the quantity of its starred repos",

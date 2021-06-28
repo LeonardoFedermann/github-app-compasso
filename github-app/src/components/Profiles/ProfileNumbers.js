@@ -30,7 +30,7 @@ export const ProfileNumbers = (props) => {
             </section>
             <section onClick={() => goToStarredList(history, props.login)}>
                 <h1>{props.starred}</h1>
-                <p>Estrelas</p>
+                <p>Estrelados</p>
             </section>
         </ProfileNumbersContainer >
     )

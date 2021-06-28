@@ -18,7 +18,7 @@ export default function StarredPage() {
 
     useEffect(() => {
         getStarred()
-        document.title = `Repositórios estrela de ${username}`
+        document.title = `Repositórios estrelados de ${username}`
     }, [])
 
     useEffect(() => {
@@ -58,10 +58,10 @@ export default function StarredPage() {
             <ReposHeader
                 showingPhrase={
                     starred.length === 0 ?
-                        `${username} não possui repositórios estrela` :
+                        `${username} não possui repositórios estrelados` :
                         `${starred.length} ${starred.length === 1 ?
-                            'repositório estrela' :
-                            'repositórios estrela'} 
+                            'repositório estrelado' :
+                            'repositórios estrelados'} 
                     de ${username}`
                 }
             />
@@ -71,7 +71,7 @@ export default function StarredPage() {
                     value={form.searchedStarredRepo}
                     name="searchedStarredRepo"
                     onChange={handleValues}
-                    label="Buscar repositório estrela"
+                    label="Buscar repositório estrelado"
                     color="secondary"
                     variant="filled"
                 />

@@ -12,11 +12,20 @@ align-items: center;
 background-color: ${primary};
 color: white;
 font-family: 'Arial';
+@media(min-width:600px){
+    width: 60%;
+}
 img{
     width: 30%;
+    @media(min-width:600px){
+        width: 30%;
+    }
 }
 `
 
 export const StyledButton = styled(Button)`
 width: 100%;
+@media(min-width:600px){
+    width: 50%;
+}
 `
