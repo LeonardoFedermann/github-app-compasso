@@ -45,9 +45,11 @@ export default function ProfilePage() {
                     />
                     <ProfileImage alt={user.login} src={user.avatar_url} />
                     <ProfilePresentation
-                        name={user.login && user.name ?
-                            user.name :
-                            user.login}
+                        name={
+                            user.login && user.name ?
+                                user.name :
+                                user.login
+                        }
                         email={user.email}
                         location={user.location}
                     />
