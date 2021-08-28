@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useForm } from '../custom hooks/useForm'
@@ -18,7 +18,7 @@ export default function StarredPage() {
 
     useEffect(() => {
         getStarred()
-        document.title = `Repositórios estrelados de ${username}`
+        document.title = `${username}'s starred repos`
     }, [])
 
     useEffect(() => {
@@ -38,11 +38,11 @@ export default function StarredPage() {
             const starredRepos = await axios.get(`${BASE_URL}/${username}/starred`)
             setStarred(starredRepos.data)
         } catch (error) {
-            alert(error.response.data.message)
+            alert('There was an error in the system, but we are already working to solve it. Please try again later')
         }
     }
 
-    const filterStarredRepos = () => {
+    const filterStarredRepos = useCallback(() => {
         if (!form.searchedStarredRepo) {
             setRenderedStarredRepos(starred)
         } else {
@@ -51,18 +51,17 @@ export default function StarredPage() {
             })
             setRenderedStarredRepos(newRenderedRepos)
         }
-    }
+    }, [form.searchedStarredRepo, starred])
 
     return (
         <MainContainer>
             <ReposHeader
                 showingPhrase={
                     starred.length === 0 ?
-                        `${username} não possui repositórios estrelados` :
-                        `${starred.length} ${starred.length === 1 ?
-                            'repositório estrelado' :
-                            'repositórios estrelados'} 
-                    de ${username}`
+                        `${username} has no starred repos` :
+                        `${username} has ${starred.length} ${starred.length === 1 ?
+                            'starred repo' :
+                            'starred repos'}`
                 }
             />
             <SearchRepoContainer>
@@ -71,7 +70,7 @@ export default function StarredPage() {
                     value={form.searchedStarredRepo}
                     name="searchedStarredRepo"
                     onChange={handleValues}
-                    label="Buscar repositório estrelado"
+                    label="Search starred repo"
                     color="secondary"
                     variant="filled"
                 />

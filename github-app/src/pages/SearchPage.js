@@ -18,7 +18,7 @@ export default function SearchPage() {
     const history = useHistory()
 
     useEffect(() => {
-        document.title = `Buscar usuário do GitHub`
+        document.title = `Search GitHub user`
     }, [])
 
     const searchUser = async (e) => {
@@ -28,9 +28,9 @@ export default function SearchPage() {
             goToFirstProfile(history, form.username)
         } catch (error) {
             if (error.response.data.message === "Not Found") {
-                alert("Usuário não encontrado")
+                alert("User was not found")
             } else {
-                alert(error.response.data.message)
+                alert('There was an error in the system, but we are already working to solve it. Please try again later')
             }
         }
     }
@@ -45,7 +45,7 @@ export default function SearchPage() {
                 <StyledTextField
                     required
                     type="text"
-                    label="Usuário"
+                    label="username"
                     color="secondary"
                     variant="filled"
                     onChange={handleValues}
@@ -57,7 +57,7 @@ export default function SearchPage() {
                     variant="contained"
                     onClick={searchUser}
                 >
-                    Buscar usuário
+                    Search user
                 </StyledButton>
             </SearchForm>
         </SearchContainer>

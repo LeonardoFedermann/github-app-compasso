@@ -19,7 +19,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         getUser()
-        document.title = `Perfil de ${username}`
+        document.title = `${username}' profile`
     }, [])
 
     const getUser = async () => {
@@ -29,7 +29,7 @@ export default function ProfilePage() {
             setStarred(starred.data)
             setUser(user.data)
         } catch (error) {
-            alert(error.response.data.message)
+            alert('There was an error in the system, but we are already working to solve it. Please try again later')
         }
     }
 

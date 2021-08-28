@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useForm } from '../custom hooks/useForm'
@@ -21,7 +21,7 @@ export default function FollowerUsersPage() {
 
     useEffect(() => {
         getFollowers()
-        document.title = `Seguidores de ${username}`
+        document.title = `${username}'s followers`
     }, [])
 
     useEffect(() => {
@@ -43,11 +43,11 @@ export default function FollowerUsersPage() {
             setFollowers(followers.data)
             setQuantity(user.data.followers)
         } catch (error) {
-            alert(error.response.data.message)
+            alert('There was an error in the system, but we are already working to solve it. Please try again later')
         }
     }
 
-    const filterUsers = () => {
+    const filterUsers = useCallback(() => {
         if (!form.searchedUser) {
             setRenderedUsers(followers)
         } else {
@@ -56,17 +56,17 @@ export default function FollowerUsersPage() {
             })
             setRenderedUsers(newRenderedUsers)
         }
-    }
+    }, [form.searchedUser, followers])
 
     return (
         <MainContainer>
             <UsersListHeader
                 showingPhrase={
                     quantity === 0 ?
-                        `Nenhum usuário segue ${username}` :
+                        `No user follows ${username}` :
                         `${quantity} ${quantity === 1 ?
-                            'usuário segue' :
-                            'usuários seguem'} 
+                            'user follows' :
+                            'users follow'} 
                     ${username}`
                 }
             />
@@ -76,7 +76,7 @@ export default function FollowerUsersPage() {
                     value={form.searchedUser}
                     name="searchedUser"
                     onChange={handleValues}
-                    label="Buscar usuário"
+                    label="Search user"
                     color="secondary"
                     variant="filled"
                 />

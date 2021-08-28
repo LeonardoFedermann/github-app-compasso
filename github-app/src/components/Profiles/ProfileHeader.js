@@ -11,7 +11,7 @@ export const ProfileHeader = (props) => {
                 <h5>#{props.login}</h5>
             </section>
             <p onClick={props.function}>
-                Buscar usuário
+                Search a user
             </p>
         </ProfileHeaderContainer>
     )

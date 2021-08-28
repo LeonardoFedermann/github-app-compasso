@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useForm } from '../custom hooks/useForm'
@@ -19,7 +19,7 @@ export default function ReposPage() {
 
     useEffect(() => {
         getRepos()
-        document.title = `Repositórios de ${username}`
+        document.title = `${username}'s repos`
     }, [])
 
     useEffect(() => {
@@ -41,11 +41,11 @@ export default function ReposPage() {
             setQuantity(user.data.public_repos)
             setRepos(repos.data)
         } catch (error) {
-            alert(error.response.data.message)
+            alert('There was an error in the system, but we are already working to solve it. Please try again later')
         }
     }
 
-    const filterRepos = () => {
+    const filterRepos = useCallback(() => {
         if (!form.searchedRepo) {
             setRenderedRepos(repos)
         } else {
@@ -54,18 +54,17 @@ export default function ReposPage() {
             })
             setRenderedRepos(newRenderedRepos)
         }
-    }
+    }, [form.searchedRepo, repos])
 
     return (
         <MainContainer>
             <ReposHeader
                 showingPhrase={
                     quantity === 0 ?
-                        `${username} não possui repositórios` :
-                        `${quantity} ${quantity === 1 ?
-                            'repositório' :
-                            'repositórios'} 
-                    de ${username}`
+                        `${username} has no repos` :
+                        `${username} has ${quantity} ${quantity === 1 ?
+                            'repo' :
+                            'repos'}`
                 }
             />
             <SearchRepoContainer>
@@ -74,7 +73,7 @@ export default function ReposPage() {
                     value={form.searchedRepo}
                     name="searchedRepo"
                     onChange={handleValues}
-                    label="Buscar repositório"
+                    label="Search repo"
                     color="secondary"
                     variant="filled"
                 />

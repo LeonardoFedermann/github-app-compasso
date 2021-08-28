@@ -9,25 +9,25 @@ export default function ErrorPage() {
     const history = useHistory()
 
     useEffect(() => {
-        document.title = `Página não encontrada`
+        document.title = `Page was not found`
     }, [])
 
     return (
         <MainContainer>
             <ErrorContainer>
                 <img alt="GitHub Logo" src={githubLogo} />
-                <h1>Ops! Não há nada aqui</h1>
+                <h1>Ops! There is nothing here!</h1>
                 <p>
-                    Parece que esse link não existe.
-                    De qualquer forma, você pode ir para nossa página inicial.
-                    Lá você encontrará todas as orientações de que precisa.
+                    It looks like this link does not exist.
+                    However, you may still go to our homepage.
+                    There you will find all the information you need.
                 </p>
                 <StyledButton
                     color="secondary"
                     variant="contained"
                     onClick={() => goToSearchPage(history)}
                 >
-                    Página inicial
+                    Homepage
                 </StyledButton>
             </ErrorContainer>
         </MainContainer>

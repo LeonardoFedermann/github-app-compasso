@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useForm } from '../custom hooks/useForm'
@@ -21,7 +21,7 @@ export default function FollowingUsersPage() {
 
     useEffect(() => {
         getFollowingUsers()
-        document.title = `Quem ${username} segue`
+        document.title = `Who ${username} follows`
     }, [])
 
     useEffect(() => {
@@ -36,7 +36,6 @@ export default function FollowingUsersPage() {
         setShowLoading(false)
     }, 5000)
 
-
     const getFollowingUsers = async () => {
         try {
             const followingUsers = await axios.get(`${BASE_URL}/${username}/following`)
@@ -44,11 +43,11 @@ export default function FollowingUsersPage() {
             setFollowingUsers(followingUsers.data)
             setQuantity(user.data.following)
         } catch (error) {
-            alert(error.response.data.message)
+            alert('There was an error in the system, but we are already working to solve it. Please try again later')
         }
     }
 
-    const filterUsers = () => {
+    const filterUsers = useCallback(() => {
         if (!form.searchedUser) {
             setRenderedUsers(followingUsers)
         } else {
@@ -57,18 +56,18 @@ export default function FollowingUsersPage() {
             })
             setRenderedUsers(newRenderedUsers)
         }
-    }
+    }, [form.searchedUser, followingUsers])
 
     return (
         <MainContainer>
             <UsersListHeader
                 showingPhrase={
                     quantity === 0 ?
-                        `${username} não segue ninguém` :
-                        `${username} segue ${quantity} 
+                        `${username} does not follow anyone` :
+                        `${username} follows ${quantity} 
                     ${quantity === 1 ?
-                            'usuário' :
-                            'usuários'
+                            'user' :
+                            'users'
                         }`
                 }
             />
@@ -78,7 +77,7 @@ export default function FollowingUsersPage() {
                     value={form.searchedUser}
                     name="searchedUser"
                     onChange={handleValues}
-                    label="Buscar usuário"
+                    label="Search user"
                     color="secondary"
                     variant="filled"
                 />
